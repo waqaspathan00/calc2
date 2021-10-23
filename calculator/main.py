@@ -1,10 +1,4 @@
-""" This is the increment function"""
-
-
-def inc(x_value):
-    """ Increment Function adds one to the x_value"""
-    return x_value + 1
-
+""" This is the Calculator object which can do basic calculator functions: +-*/ """
 
 class Calculator:
     """ This is the Calculator class"""
@@ -16,12 +10,30 @@ class Calculator:
         """ Get Result of Calculation"""
         return self.result
 
-    def add_number(self, value_a):
-        """ adds number to result"""
-        self.result = self.result + value_a
+    def add_number(self, *vals):
+        """ adds val to result"""
+        for val in vals:
+            self.result += val
+
         return self.result
 
-    def subtract_number(self, value_a):
-        """ subtract number from result"""
-        self.result = self.result - value_a
+    def subtract_number(self, *vals):
+        """ subtract val from result """
+        for val in vals:
+            self.result -= val
+
+        return self.result
+
+    def multiply_number(self, *vals):
+        """ multiply result by number """
+        for val in vals:
+            self.result *= val
+
+        return self.result
+
+    def divide_number(self, *vals):
+        """ divide result by number """
+        for val in vals:
+            self.result /= val
+
         return self.result
