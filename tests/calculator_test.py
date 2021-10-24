@@ -39,3 +39,11 @@ def test_calculator_divide():
     calc = Calculator()
     calc.divide_number(1)
     assert calc.get_result() == 0
+
+def test_calculator_divide_by_zero():
+    """ Testing divide by zero on divide method of calculator"""
+    # the WITH keyword here is saying the following block of code must throw given exception
+    with pytest.raises(ZeroDivisionError):
+        calc = Calculator()
+        calc.add_number(10)
+        calc.divide_number(0)
