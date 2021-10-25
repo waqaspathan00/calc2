@@ -3,8 +3,8 @@
 class Calculator:
     """ This is the Calculator class"""
 
-    def __init__(self):
-        self.result = 0
+    def __init__(self, starting_result=0):
+        self.result = starting_result
 
     def get_result(self):
         """ Get Result of Calculation"""
