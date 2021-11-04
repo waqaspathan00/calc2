@@ -26,6 +26,7 @@ def test_add():
     assert total == 6
 
 def test_get_first_calculation():
+    """ evaluate the result of the first calculation in history """
     calc = Calculator()
 
     calculation = calc.get_first_calculation()
@@ -33,6 +34,7 @@ def test_get_first_calculation():
     assert calculation.get_result() == 6
 
 def test_add_and_get_last_calculation():
+    """ evaluate the result of the last calculation in history """
     calc = Calculator()
 
     calc.add_number(3, 4)
@@ -43,11 +45,16 @@ def test_add_and_get_last_calculation():
     assert calculation.get_result() == 10
 
 def test_number_of_calculations_in_history():
+    """ test that all previous calculations were added to history """
     calc = Calculator()
 
     assert calc.get_num_of_calculations() == 3
 
 def test_remove_calculation_from_history():
+    """
+    remove calculation at index 2 of history
+    then test if the 2nd calculation is the new last
+    """
     calc = Calculator()
 
     calc.remove_from_history(2)
@@ -56,6 +63,7 @@ def test_remove_calculation_from_history():
     assert calculation.get_result() == 7
 
 def test_number_of_calculations_in_history_after_clearing():
+    """ clear the history then test to see if length of history is 0 (empty) """
     calc = Calculator()
 
     calc.clear_history()
@@ -94,6 +102,7 @@ def test_calculator_divide():
 
 def test_calculator_divide_by_zero():
     """ Testing divide by zero on divide method of calculator"""
+
     # the 'with' keyword here is saying the following block of code must throw given exception
     with pytest.raises(ZeroDivisionError):
         calc = Calculator()
