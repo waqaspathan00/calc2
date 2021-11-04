@@ -1,6 +1,7 @@
 """ This is the Calculator object which can do basic calculator functions: +-*/ """
 from calculator.calculations.operations import *
 
+
 class Calculator:
     """ This is the Calculator class"""
 
@@ -32,23 +33,23 @@ class Calculator:
 
         return total.get_result()
 
-    def multiply_number(self, *vals):
+    @staticmethod
+    def multiply_number(*vals):
         """ multiply result by number """
-        for val in vals:
-            self.result *= val
+        total = Multiplication(*vals)
 
-        self.history.append(Multiplication(vals, self.result))
+        Calculator.history.append(total)
 
-        return self.result
+        return total.get_result()
 
-    def divide_number(self, *vals):
+    @staticmethod
+    def divide_number(*vals):
         """ divide result by number """
-        for val in vals:
-            self.result /= val
+        total = Division(*vals)
 
-        self.history.append(Division(vals, self.result))
+        Calculator.history.append(total)
 
-        return self.result
+        return total.get_result()
 
     @staticmethod
     def get_first_calculation():

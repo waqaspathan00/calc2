@@ -18,27 +18,30 @@ class Subtraction(Calculation):
 
     def get_result(self):
         """ calculate the sum of the vals in self.vals """
-        total = 0
-        for val in self.vals:
+        total = self.vals[0]
+        for val in self.vals[1:]:
             total -= val
 
         return total
 
-# class Multiplication(Calculation):
-#
-#     def getResult(self):
-#         """ calculate the sum of the vals in self.vals """
-#         total = 1
-#         for val in self.vals:
-#             total *= val
-#
-#         return total
-#
-# class Division(Calculation):
-#
-#     def getResult(self):
-#         """ calculate the sum of the vals in self.vals """
-#         total = 1
-#         for val in self.vals:
-#             total += val
-#         return total
+class Multiplication(Calculation):
+
+    def get_result(self):
+        """ calculate the sum of the vals in self.vals """
+        total = self.vals[0]
+
+        for val in self.vals[1:]:
+            total *= val
+
+        return total
+
+class Division(Calculation):
+
+    def get_result(self):
+        """ calculate the sum of the vals in self.vals """
+        total = self.vals[0]
+
+        for val in self.vals[1:]:
+            total /= val
+
+        return total

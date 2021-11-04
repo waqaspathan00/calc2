@@ -55,7 +55,6 @@ def test_remove_calculation_from_history():
 
     assert calculation.get_result() == 7
 
-
 def test_number_of_calculations_in_history_after_clearing():
     calc = Calculator()
 
@@ -67,34 +66,35 @@ def test_calculator_subtract():
     """ Testing the subtract method of the calculator """
     calc = Calculator()
 
-    calc.subtract_number(1)
+    calc.subtract_number(10, 8)
 
     calculation = calc.get_last_calculation()
 
-    assert calculation.get_result() == -1
+    assert calculation.get_result() == 2
 
-# def test_calculator_multiply():
-#     """ Testing the multiply method of the calculator """
-#     calc = Calculator()
-#     calc.multiply_number(1)
-#     assert calc.get_result() == 0
-#
-# def test_calculator_divide():
-#     """ Testing the divide method of the calculator """
-#     calc = Calculator()
-#     calc.divide_number(1)
-#     assert calc.get_result() == 0
-#
-# def test_calculator_divide_by_zero():
-#     """ Testing divide by zero on divide method of calculator"""
-#     # the WITH keyword here is saying the following block of code must throw given exception
-#     with pytest.raises(ZeroDivisionError):
-#         calc = Calculator()
-#         calc.add_number(10)
-#         calc.divide_number(0)
+def test_calculator_multiply():
+    """ Testing the multiply method of the calculator """
+    calc = Calculator()
 
-# def test_calculator_history():
-#     calc = Calculator()
-#     calc.add_number(1)
-#     print(calc.history)
-#     assert calc.get_result() == 0
+    calc.multiply_number(2, 3, 2)
+
+    calculation = calc.get_last_calculation()
+
+    assert calculation.get_result() == 12
+
+def test_calculator_divide():
+    """ Testing the divide method of the calculator """
+    calc = Calculator()
+
+    calc.divide_number(20, 2)
+
+    calculation = calc.get_last_calculation()
+
+    assert calculation.get_result() == 10
+
+def test_calculator_divide_by_zero():
+    """ Testing divide by zero on divide method of calculator"""
+    # the 'with' keyword here is saying the following block of code must throw given exception
+    with pytest.raises(ZeroDivisionError):
+        calc = Calculator()
+        calc.divide_number(10, 0)
