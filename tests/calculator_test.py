@@ -20,7 +20,7 @@ def test_calculator_add():
     # ACT by calling the method to be tested
     calc.add_number(1)
     # ASSERT that the results are correct
-    assert calc.result == 1
+    assert calc.get_result()
 
 def test_calculator_subtract():
     """ Testing the subtract method of the calculator """
@@ -47,3 +47,9 @@ def test_calculator_divide_by_zero():
         calc = Calculator()
         calc.add_number(10)
         calc.divide_number(0)
+
+# def test_calculator_history():
+#     calc = Calculator()
+#     calc.add_number(1)
+#     print(calc.history)
+#     assert calc.get_result() == 0

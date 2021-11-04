@@ -15,7 +15,9 @@ class Calculator:
         for val in vals:
             self.result += val
 
-        return self.result
+        Calculator.history.append(total)
+
+        return total.getResult()
 
     def subtract_number(self, *vals):
         """ subtract val from result """
