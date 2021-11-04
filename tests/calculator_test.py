@@ -33,16 +33,27 @@ def test_get_first_calculation():
 def test_calculator_add_and_get_last_calculation():
     calc = Calculator()
 
+    calc.add_number(3, 4)
     calc.add_number(5, 5)
     calculation = calc.get_last_calculation()
 
+    assert calculation.get_result() != 7
     assert calculation.get_result() == 10
 
-# def test_calculator_subtract():
-#     """ Testing the subtract method of the calculator """
-#     calc = Calculator()
-#     calc.subtract_number(1)
-#     assert calc.get_result() == -1
+def test_number_of_calculations_in_history():
+    calc = Calculator()
+
+    assert calc.get_num_of_calculations() == 3
+
+def test_calculator_subtract():
+    """ Testing the subtract method of the calculator """
+    calc = Calculator()
+
+    calc.subtract_number(1)
+
+    calculation = calc.get_last_calculation()
+
+    assert calculation.get_result() == -1
 
 # def test_calculator_multiply():
 #     """ Testing the multiply method of the calculator """
