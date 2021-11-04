@@ -1,7 +1,7 @@
 """ this file contains the math operation classes built on Calculation class """
 from calculator.calculations.calculation import Calculation
 
-class Addition(Calculation):
+class Addition(Calculation):  # pylint: disable=too-few-public-methods
     """ calculate sum of numbers in self.vals """
 
     # CONSTRUCTOR CALLING SUPER use this if you want to take more parameters
@@ -15,7 +15,7 @@ class Addition(Calculation):
             total += val
         return total
 
-class Subtraction(Calculation):
+class Subtraction(Calculation):  # pylint: disable=too-few-public-methods
     """
     save the first number in self.vals
     from this number subtract every subsequent number to calculate result
@@ -29,7 +29,7 @@ class Subtraction(Calculation):
 
         return total
 
-class Multiplication(Calculation):
+class Multiplication(Calculation):  # pylint: disable=too-few-public-methods
     """
     save the first number in self.vals
     then multiply this number by every subsequent number to get result
@@ -44,7 +44,7 @@ class Multiplication(Calculation):
 
         return total
 
-class Division(Calculation):
+class Division(Calculation):  # pylint: disable=too-few-public-methods
     """
     save the first number in self.vals
     then divide this number by every subsequent number to get result
