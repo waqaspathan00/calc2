@@ -65,3 +65,7 @@ class Calculator:
     @staticmethod
     def clear_history():
         Calculator.history = []
+
+    @staticmethod
+    def remove_from_history(index):
+        Calculator.history.pop(index)

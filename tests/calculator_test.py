@@ -47,6 +47,14 @@ def test_number_of_calculations_in_history():
 
     assert calc.get_num_of_calculations() == 3
 
+def test_remove_calculation_from_history():
+    calc = Calculator()
+
+    calc.remove_from_history(2)
+    calculation = calc.get_last_calculation()
+
+    assert calculation.get_result() == 7
+
 
 def test_number_of_calculations_in_history_after_clearing():
     calc = Calculator()
