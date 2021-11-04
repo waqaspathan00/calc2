@@ -61,3 +61,7 @@ class Calculator:
     @staticmethod
     def get_num_of_calculations():
         return len(Calculator.history)
+
+    @staticmethod
+    def clear_history():
+        Calculator.history = []

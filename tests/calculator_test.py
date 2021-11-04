@@ -47,6 +47,14 @@ def test_number_of_calculations_in_history():
 
     assert calc.get_num_of_calculations() == 3
 
+
+def test_number_of_calculations_in_history_after_clearing():
+    calc = Calculator()
+
+    calc.clear_history()
+
+    assert calc.get_num_of_calculations() == 0
+
 def test_calculator_subtract():
     """ Testing the subtract method of the calculator """
     calc = Calculator()
