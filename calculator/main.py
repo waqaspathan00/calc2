@@ -58,3 +58,6 @@ class Calculator:
     def get_last_calculation():
         return Calculator.history[-1]
 
+    @staticmethod
+    def get_num_of_calculations():
+        return len(Calculator.history)

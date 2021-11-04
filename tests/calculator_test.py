@@ -28,9 +28,11 @@ def test_add():
 def test_get_first_calculation():
     calc = Calculator()
 
-    assert calc.get_first_calculation() == 6
+    calculation = calc.get_first_calculation()
 
-def test_calculator_add_and_get_last_calculation():
+    assert calculation.get_result() == 6
+
+def test_add_and_get_last_calculation():
     calc = Calculator()
 
     calc.add_number(3, 4)
