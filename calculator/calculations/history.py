@@ -9,22 +9,22 @@ class History:
     history = []
 
     @staticmethod
-    def add_addition_calculation(*vals):
+    def add_addition_calculation(*vals: Tuple[float]):
         """ add Addition object with vals to history """
         History.history.append(Addition.create(*vals))
 
     @staticmethod
-    def add_subtraction_calculation(*vals):
+    def add_subtraction_calculation(*vals: Tuple[float]):
         """ add Subtraction object with vals to history """
         History.history.append(Subtraction.create(*vals))
 
     @staticmethod
-    def add_multiplication_calculation(*vals):
+    def add_multiplication_calculation(*vals: Tuple[float]):
         """ add Multiplication object with vals to history """
         History.history.append(Multiplication.create(*vals))
 
     @staticmethod
-    def add_division_calculation(*vals):
+    def add_division_calculation(*vals: Tuple[float]):
         """ add Division object with vals to history """
         History.history.append(Division.create(*vals))
 
@@ -49,6 +49,6 @@ class History:
         History.history = []
 
     @staticmethod
-    def remove_from_history(index):
+    def remove_from_history(index: int):
         """ remove a calculation at specified index in history """
         History.history.pop(index)

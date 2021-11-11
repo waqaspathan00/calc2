@@ -7,11 +7,11 @@ class Calculation:
     when instantiated, it will take the numbers in a math calculation as parameters
     """
 
-    def __init__(self, *vals):
+    def __init__(self, *vals: Tuple[float]):
         """ initialize Calculation object with vals """
         self.vals = vals
 
     @classmethod
-    def create(cls, *vals):
+    def create(cls, *vals: Tuple[float]):
         """ create Calculation object factory method """
         return cls(*vals)
