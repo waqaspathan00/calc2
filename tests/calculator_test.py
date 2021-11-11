@@ -1,4 +1,4 @@
-"""Testing the Calculator"""
+""" testing the Calculator """
 import pytest
 from calculator.main import Calculator
 from calculator.calculations.history import History
@@ -15,89 +15,43 @@ from calculator.calculations.history import History
 #
 #     assert calc.get_result() == 0
 
-def test_add():
-    """ Testing the Add function of the calculator """
-    # ARRANGE by instantiating the calc class
-    calc = Calculator()
+@pytest.fixture
+def clear_history():
+    """ creates an instance of a Calculator with empty history """
+    History.clear_history()
+
+@pytest.fixture
+def new_calculator():
+    return Calculator()
+
+def test_add(new_calculator):
+    """ testing the Add function of the calculator """
+    # ARRANGE by instantiating the calc class using pytest fixture
 
     # ACT by calling the method to be tested
-    total = calc.add_number(1, 2, 3)
+    total = new_calculator.add_number(1, 2, 3)
 
     # ASSERT that the results are correct
     assert total == 6
 
-def test_get_first_calculation():
-    """ evaluate the result of the first calculation in history """
-    calculation = History.get_first_calculation()
-
-    assert calculation.get_result() == 6
-
-def test_add_and_get_last_calculation():
-    """ evaluate the result of the last calculation in history """
-    calc = Calculator()
-    calc.add_number(3, 4)
-    calc.add_number(5, 5)
-
-    calculation = History.get_last_calculation()
-
-    assert calculation.get_result() != 7
-    assert calculation.get_result() == 10
-
-def test_number_of_calculations_in_history():
-    """ test that all previous calculations were added to history """
-    assert History.get_num_of_calculations() == 3
-
-def test_remove_calculation_from_history():
-    """
-    remove calculation at index 2 of history
-    then test if the 2nd calculation is the new last
-    """
-    History.remove_from_history(2)
-
-    calculation = History.get_last_calculation()
-
-    assert calculation.get_result() == 7
-
-def test_number_of_calculations_in_history_after_clearing():
-    """ clear the history then test to see if length of history is 0 (empty) """
-    History.clear_history()
-
-    assert History.get_num_of_calculations() == 0
-
-def test_calculator_subtract():
+def test_calculator_subtract(new_calculator):
     """ Testing the subtract method of the calculator """
-    calc = Calculator()
+    result = new_calculator.subtract_number(10, 8)
+    assert result == 2
 
-    calc.subtract_number(10, 8)
-
-    calculation = History.get_last_calculation()
-
-    assert calculation.get_result() == 2
-
-def test_calculator_multiply():
+def test_calculator_multiply(new_calculator):
     """ Testing the multiply method of the calculator """
-    calc = Calculator()
+    result = new_calculator.multiply_number(2, 3, 2)
+    assert result == 12
 
-    calc.multiply_number(2, 3, 2)
-
-    calculation = History.get_last_calculation()
-
-    assert calculation.get_result() == 12
-
-def test_calculator_divide():
+def test_calculator_divide(new_calculator):
     """ Testing the divide method of the calculator """
-    calc = Calculator()
+    result = new_calculator.divide_number(20, 2)
+    assert result == 10
 
-    calc.divide_number(20, 2)
-
-    calculation = History.get_last_calculation()
-
-    assert calculation.get_result() == 10
-
-def test_calculator_divide_by_zero():
+def test_calculator_divide_by_zero(new_calculator):
     """ Testing divide by zero on divide method of calculator"""
 
     # the 'with' keyword here is saying the following block of code must throw given exception
     with pytest.raises(ZeroDivisionError):
-        calc = Calculator()
-        calc.divide_number(10, 0)
+        result = new_calculator.divide_number(10, 0)
