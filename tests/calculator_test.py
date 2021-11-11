@@ -1,27 +1,10 @@
 """ testing the Calculator """
 import pytest
 from calculator.main import Calculator
-from calculator.calculations.history import History
 
-# RESULT IS DEPRECATED
-# def test_calculator_result():
-#     """ Testing calculator result is 0 """
-#     calc = Calculator()
-#     assert calc.result == 0
-#
-# def test_calculator_get_result():
-#     """ Testing the Get result method of the calculator """
-#     calc = Calculator()
-#
-#     assert calc.get_result() == 0
-
-@pytest.fixture
-def clear_history():
-    """ creates an instance of a Calculator with empty history """
-    History.clear_history()
-
-@pytest.fixture
-def new_calculator():
+@pytest.fixture(name="new_calculator")
+def fixture_new_calculator():
+    """ returns an instance of a Calculator with no calculation data  """
     return Calculator()
 
 def test_add(new_calculator):
@@ -29,10 +12,10 @@ def test_add(new_calculator):
     # ARRANGE by instantiating the calc class using pytest fixture
 
     # ACT by calling the method to be tested
-    total = new_calculator.add_number(1, 2, 3)
+    result = new_calculator.add_number(1, 2, 3)
 
     # ASSERT that the results are correct
-    assert total == 6
+    assert result == 6
 
 def test_calculator_subtract(new_calculator):
     """ Testing the subtract method of the calculator """
@@ -54,4 +37,4 @@ def test_calculator_divide_by_zero(new_calculator):
 
     # the 'with' keyword here is saying the following block of code must throw given exception
     with pytest.raises(ZeroDivisionError):
-        result = new_calculator.divide_number(10, 0)
+        new_calculator.divide_number(10, 0)
