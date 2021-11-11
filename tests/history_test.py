@@ -3,13 +3,13 @@ import pytest
 from calculator.main import Calculator
 from calculator.calculations.history import History
 
-@pytest.fixture
-def clear_history():
+@pytest.fixture(name="clear_history")
+def fixture_clear_history():
     """ creates an instance of a Calculator with empty history """
     History.clear_history()
 
-@pytest.fixture
-def used_calculator():
+@pytest.fixture(name="used_calculator")
+def fixture_used_calculator():
     """ return a Calculator object with 4 completed math operations """
     calculator = Calculator()
 
@@ -20,10 +20,12 @@ def used_calculator():
 
     return calculator
 
+# pylint: disable=unused-argument
 def test_number_of_calculations_in_history_after_clearing(used_calculator, clear_history):
     """ clear the history then test to see if length of history is 0 (empty) """
     assert History.get_num_of_calculations() == 0
 
+# pylint: disable=unused-argument
 def test_get_first_calculation(clear_history, used_calculator):
     """ evaluate the result of the first calculation in history """
     # ARRANGE by performing some calculations using pytest fixture: used_calculator
@@ -34,15 +36,18 @@ def test_get_first_calculation(clear_history, used_calculator):
     # ASSERT by confirming the result of the first calculation
     assert calculation.get_result() == 6
 
+# pylint: disable=unused-argument
 def test_get_last_calculation(clear_history, used_calculator):
     """ evaluate the result of the last calculation in history """
     calculation = History.get_last_calculation()
     assert calculation.get_result() == 5
 
+# pylint: disable=unused-argument
 def test_number_of_calculations_in_history(clear_history, used_calculator):
     """ test completion of 4 calculations from pytest fixture used_calculator """
     assert History.get_num_of_calculations() == 4
 
+# pylint: disable=unused-argument
 def test_remove_calculation_from_history(clear_history, used_calculator):
     """
     there should currently be 4 calculations in history
@@ -52,4 +57,3 @@ def test_remove_calculation_from_history(clear_history, used_calculator):
     History.remove_from_history(3)
     calculation = History.get_last_calculation()
     assert calculation.get_result() == 8
-
