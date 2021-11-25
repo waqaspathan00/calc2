@@ -8,14 +8,7 @@ class Calculator:
     @staticmethod
     def calculate_numbers(operation, *vals):
         """ will call respective calculation functions based on operation """
-        operation_functions = {
-            "addition": Calculator.add_number,
-            "subtraction": Calculator.subtract_number,
-            "multiplication": Calculator.multiply_number,
-            "division": Calculator.divide_number,
-        }
-
-        function = operation_functions[operation]
+        function = Calculator.operation_functions[operation]
         return function(*vals)
 
     @staticmethod
@@ -47,3 +40,11 @@ class Calculator:
         """ return the result of the last calculation """
         calculation = History.get_last_calculation()
         return calculation.get_result()
+
+
+Calculator.operation_functions = {
+    "addition": Calculator.add_number,
+    "subtraction": Calculator.subtract_number,
+    "multiplication": Calculator.multiply_number,
+    "division": Calculator.divide_number,
+}
