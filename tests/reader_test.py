@@ -11,7 +11,7 @@ def test_get_operation_name():
     # ASSERT
     assert operation_name == "addition"
 
-def test_calculate_using_file():
+def test_addition_using_file():
     reader = Reader("tests/test_data/addition.csv")
     operation = reader.operation
 
@@ -21,6 +21,43 @@ def test_calculate_using_file():
         calculated_result = Calculator.calculate_numbers(operation, *vals)
 
         assert expected_result == calculated_result
+
+
+def test_subtraction_using_file():
+    reader = Reader("tests/test_data/subtraction.csv")
+    operation = reader.operation
+
+    for row in reader.rows:
+        expected_result = row[0]
+        vals = row[1:]
+        calculated_result = Calculator.calculate_numbers(operation, *vals)
+
+        assert expected_result == calculated_result
+
+
+def test_multiplication_using_file():
+    reader = Reader("tests/test_data/multiplication.csv")
+    operation = reader.operation
+
+    for row in reader.rows:
+        expected_result = row[0]
+        vals = row[1:]
+        calculated_result = Calculator.calculate_numbers(operation, *vals)
+
+        assert expected_result == calculated_result
+
+
+def test_division_using_file():
+    reader = Reader("tests/test_data/division.csv")
+    operation = reader.operation
+
+    for row in reader.rows:
+        expected_result = row[0]
+        vals = row[1:]
+        calculated_result = Calculator.calculate_numbers(operation, *vals)
+
+        assert expected_result == calculated_result
+
 
 """
 make a fixture to load the csv file and perform calculations
