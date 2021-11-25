@@ -11,6 +11,25 @@ class Reader:
         self.operation = self.get_operation_name()
         self.rows = self._get_rows()
 
+    def calculate_file(self):
+        """
+        read a file and perform required math calculation using filename
+        return a 2d list with following format for each item - [expected_result, calculated_result]
+            - expected_result, value we expect from calculation gotten from each line in the file
+            - calculated_result, the value we calculate from the numbers in the file
+        """
+        # operation = reader.operation
+        results = []
+
+        for row in self.rows:
+            expected_result = row[0]
+            vals = row[1:]
+            Calculator.calculate_numbers(operation, *vals)
+
+            results.append([expected_result, *vals])
+
+        return results
+
     def get_operation_name(self):
         """ extract the operation name from filepath to get operation type """
         filepath = self.filepath[:-4]  # remove .csv extension

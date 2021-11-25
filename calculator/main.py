@@ -6,28 +6,6 @@ class Calculator:
     """ This is the Calculator class"""
 
     @staticmethod
-    def calculate_file(filename):
-        """
-        read a file and perform required math calculation using filename
-        return a 2d list with following format for each item - [expected_result, calculated_result]
-            - expected_result, value we expect from calculation gotten from each line in the file
-            - calculated_result, the value we calculate from the numbers in the file
-        """
-
-        reader = Reader(filename)
-        operation = reader.operation
-        results = []
-
-        for row in reader.rows:
-            expected_result = row[0]
-            vals = row[1:]
-            calculated_result = Calculator.calculate_numbers(operation, *vals)
-
-            results.append([expected_result, calculated_result])
-
-        return results
-
-    @staticmethod
     def calculate_numbers(operation, *vals):
         if operation == "addition":
             return Calculator.add_number(*vals)

@@ -12,10 +12,17 @@ def test_get_operation_name():
     assert operation_name == "addition"
 
 def test_calculate_using_file():
-    results = Calculator.calculate_file("tests/test_data/addition.csv")
+    reader = Reader("tests/test_data/addition.csv")
+    operation = reader.operation
 
-    for result in results:
-        expected = result[0]
-        calculated = result[1]
+    for row in reader.rows:
+        expected_result = row[0]
+        vals = row[1:]
+        calculated_result = Calculator.calculate_numbers(operation, *vals)
 
-        assert expected == calculated
+        assert expected_result == calculated_result
+
+"""
+make a fixture to load the csv file and perform calculations
+one file with 4 results for each op and set of numbers to be calculated
+"""
