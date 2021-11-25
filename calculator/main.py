@@ -7,14 +7,16 @@ class Calculator:
 
     @staticmethod
     def calculate_numbers(operation, *vals):
-        if operation == "addition":
-            return Calculator.add_number(*vals)
-        elif operation == "subtraction":
-            return Calculator.subtract_number(*vals)
-        elif operation == "multiplication":
-            return Calculator.multiply_number(*vals)
-        elif operation == "division":
-            return Calculator.divide_number(*vals)
+        """ will call respective calculation functions based on operation """
+        operation_functions = {
+            "addition": Calculator.add_number,
+            "subtraction": Calculator.subtract_number,
+            "multiplication": Calculator.multiply_number,
+            "division": Calculator.divide_number,
+        }
+
+        function = operation_functions[operation]
+        return function(*vals)
 
     @staticmethod
     def add_number(*vals):
