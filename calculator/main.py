@@ -1,6 +1,6 @@
 """ This is the Calculator object which can do basic calculator functions: +-*/ """
 from calculator.helpers.history import History
-from calculator.helpers.csv_reader import Reader
+from calculator.helpers.csv_handler import Reader
 
 class Calculator:
     """ This is the Calculator class"""
