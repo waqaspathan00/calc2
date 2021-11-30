@@ -1,4 +1,7 @@
 import pandas
+import time
+import csv
+import os
 
 class Reader:
 
@@ -60,3 +63,24 @@ class Reader:
 
         return rows
 
+
+class Writer:
+
+    def __init__(self):
+        self.ind = len(os.listdir())
+
+    def write_log(self, input_file):
+        """
+        Writes a log file containing:
+            - unix time stamp
+            - filename of the input file
+            - record number
+            - operation
+            - result of the calculation
+        """
+        filename = "log_" + str(self.ind)
+        row = [time.time(), input_file, self.ind, ]
+
+        with open(filename, "w") as file:
+            writer = csv.writer(file)
+            writer.writerow()
