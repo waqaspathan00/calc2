@@ -8,7 +8,7 @@ class Reader:
         self.dataframe = pandas.DataFrame(data=self.data)
 
         # get the math operation and rows of data as tuples
-        self.operation = self.get_operation_name()
+        self.operation = self._get_operation_name()
         self.rows = self._get_rows()
 
     def calculate_file(self):
@@ -30,11 +30,17 @@ class Reader:
 
         return results
 
-    def get_operation_name(self):
+    def _get_operation_name(self):
         """ extract the operation name from filepath to get operation type """
         filepath = self.filepath[:-4]  # remove .csv extension
         filepath = filepath.split("/")   # split the string into list using "/" as delimiter
-        return filepath[-1]   # the filename should rest in the last position of the list
+        filepath = filepath[-1]  # the filename should rest in the last position of the list
+
+        # remove the word "large" from the name if large data file
+        if "large_" in filepath:
+            filepath = filepath[6:]
+
+        return filepath
 
     def _get_rows(self):
         """
