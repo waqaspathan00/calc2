@@ -55,6 +55,8 @@ class Division(Calculation):  # pylint: disable=too-few-public-methods
         total = self.vals[0]
 
         for val in self.vals[1:]:
+            if val == 0:
+                raise ZeroDivisionError("Divide by zero error")
             total /= val
 
         return total
