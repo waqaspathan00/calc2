@@ -1,7 +1,7 @@
 """A simple flask web app"""
 from flask import Flask, request
 from flask import render_template
-from calc.calculator import Calculator
+from calculator.main import Calculator
 app = Flask(__name__)
 
 @app.route("/")
@@ -13,13 +13,13 @@ def index():
 def basicform():
     """Post Request Handling"""
     if request.method == 'POST':
-        #get the values out of the form
+        # get the values out of the form
         value1 = request.form['value1']
         value2 = request.form['value2']
         operation = request.form['operation']
-        #make the tuple
+        # make the tuple
         my_tuple = (value1, value2)
-        #this will call the correct operation
+        # this will call the correct operation
         getattr(Calculator, operation)(my_tuple)
         result = str(Calculator.get_last_result_value())
         return render_template('result.html', value1=value1, value2=value2, operation=operation, result=result)
