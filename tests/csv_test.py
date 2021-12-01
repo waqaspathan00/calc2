@@ -9,7 +9,7 @@ def test_get_operation_name():
     filepath = "tests/input_data/addition.csv"
 
     # ACT
-    operation_name = Reader._get_operation_name(filepath)
+    operation_name = Reader.get_operation_name(filepath)
 
     # ASSERT
     assert operation_name == "addition"
@@ -28,34 +28,41 @@ def operation_test_loop(rows, operation):
 
 def test_addition_using_file():
     """  """
-    rows, operation = Reader.process_file("tests/input_data/addition.csv")
+    filename = "tests/input_data/addition.csv"
+    rows, operation = Reader.process_file(filename)
 
     operation_test_loop(rows, operation)
+
+    Writer.write_log(filename)
 
 def test_subtraction_using_file():
     """  """
-    rows, operation = Reader.process_file("tests/input_data/subtraction.csv")
+    filename = "tests/input_data/subtraction.csv"
+    rows, operation = Reader.process_file(filename)
 
     operation_test_loop(rows, operation)
+
+    Writer.write_log(filename)
 
 def test_multiplication_using_file():
     """  """
-    rows, operation = Reader.process_file("tests/input_data/multiplication.csv")
+    filename = "tests/input_data/multiplication.csv"
+    rows, operation = Reader.process_file(filename)
 
     operation_test_loop(rows, operation)
 
+    Writer.write_log(filename)
+
 def test_division_using_file():
     """  """
-    rows, operation = Reader.process_file("tests/input_data/division.csv")
+    filename = "tests/input_data/division.csv"
+    rows, operation = Reader.process_file(filename)
 
     with pytest.raises(ZeroDivisionError):
-        # operation_test_loop(rows, operation)
-        for row in rows:
-            expected_result = row[0]
-            vals = row[1:]
-            calculated_result = Calculator.calculate_numbers(operation, *vals)
+        operation_test_loop(rows, operation)
 
-            assert expected_result == calculated_result
+    Writer.write_log(filename)
+
 
 def test_large_addition_using_file():
     """  """
@@ -63,14 +70,20 @@ def test_large_addition_using_file():
 
     operation_test_loop(rows, operation)
 
+    Writer.write_log(filename)
+
 def test_large_subtraction_using_file():
     """  """
     rows, operation = Reader.process_file("tests/input_data/large_subtraction.csv")
 
     operation_test_loop(rows, operation)
 
+    Writer.write_log(filename)
+
 def test_large_multiplication_using_file():
     """  """
     rows, operation = Reader.process_file("tests/input_data/large_multiplication.csv")
 
     operation_test_loop(rows, operation)
+
+    Writer.write_log(filename)
