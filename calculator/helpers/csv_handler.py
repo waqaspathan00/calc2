@@ -5,37 +5,42 @@ import os
 
 class Reader:
 
-    def __init__(self, filepath):
-        self.filepath = filepath
-        self.data = pandas.read_csv(filepath)
-        self.dataframe = pandas.DataFrame(data=self.data)
-
-        # get the math operation and rows of data as tuples
-        self.operation = self._get_operation_name()
-        self.rows = self._get_rows()
-
-    def calculate_file(self):
+    @staticmethod
+    def process_file(filepath):
         """
-        read a file and perform required math calculation using filename
-        return a 2d list with following format for each item - [expected_result, calculated_result]
-            - expected_result, value we expect from calculation gotten from each line in the file
-            - calculated_result, the value we calculate from the numbers in the file
+        get the rows of a csv file and the operation name from filepath
         """
-        # operation = reader.operation
-        results = []
+        rows = Reader._get_rows(filepath)
+        operation = Reader._get_operation_name(filepath)
 
-        for row in self.rows:
-            expected_result = row[0]
-            vals = row[1:]
-            Calculator.calculate_numbers(operation, *vals)
+        return rows, operation
 
-            results.append([expected_result, *vals])
+    @staticmethod
+    def _get_rows(filepath):
+        """
+        returns a 2d list
+        The first index of each internal list is the result/ expectant value
+        every subsequent value is a number to be calculated
+        """
+        filepath = filepath
+        data = pandas.read_csv(filepath)
+        dataframe = pandas.DataFrame(data=data)
+        cols = list(dataframe.columns)
 
-        return results
+        rows = []
+        for i in range(len(data)):
+            row = []
+            for j in range(len(cols)):
+                col = cols[j]
+                row.append(dataframe[col][i])
+            rows.append(row)
 
-    def _get_operation_name(self):
+        return rows
+
+    @staticmethod
+    def _get_operation_name(filepath):
         """ extract the operation name from filepath to get operation type """
-        filepath = self.filepath[:-4]  # remove .csv extension
+        filepath = filepath[:-4]  # remove .csv extension
         filepath = filepath.split("/")   # split the string into list using "/" as delimiter
         filepath = filepath[-1]  # the filename should rest in the last position of the list
 
@@ -45,31 +50,11 @@ class Reader:
 
         return filepath
 
-    def _get_rows(self):
-        """
-        returns a 2d list
-        The first index of each internal list is the result/ expectant value
-        every subsequent value is a number to be calculated
-        """
-        cols = list(self.dataframe.columns)
-
-        rows = []
-        for i in range(len(self.data)):
-            row = []
-            for j in range(len(cols)):
-                col = cols[j]
-                row.append(self.dataframe[col][i])
-            rows.append(row)
-
-        return rows
-
 
 class Writer:
 
-    def __init__(self):
-        self.ind = len(os.listdir())
-
-    def write_log(self, input_file):
+    @staticmethod
+    def write_log(input_file):
         """
         Writes a log file containing:
             - unix time stamp
@@ -78,9 +63,11 @@ class Writer:
             - operation
             - result of the calculation
         """
-        filename = "log_" + str(self.ind)
-        row = [time.time(), input_file, self.ind, ]
+
+        ind = len(os.listdir())
+        filename = "log_" + str(ind)
+        row = [time.time(), input_file, ind, ]
 
         with open(filename, "w") as file:
             writer = csv.writer(file)
-            writer.writerow()
+            writer.writerow(row)
