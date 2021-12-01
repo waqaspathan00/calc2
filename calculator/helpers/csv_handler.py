@@ -10,13 +10,13 @@ class Reader:
         """
         get the rows of a csv file and the operation name from filepath
         """
-        rows = Reader._get_rows(filepath)
-        operation = Reader._get_operation_name(filepath)
+        rows = Reader.get_rows(filepath)
+        operation = Reader.get_operation_name(filepath)
 
         return rows, operation
 
     @staticmethod
-    def _get_rows(filepath):
+    def get_rows(filepath):
         """
         returns a 2d list
         The first index of each internal list is the result/ expectant value
@@ -38,7 +38,7 @@ class Reader:
         return rows
 
     @staticmethod
-    def _get_operation_name(filepath):
+    def get_operation_name(filepath):
         """ extract the operation name from filepath to get operation type """
         filepath = filepath[:-4]  # remove .csv extension
         filepath = filepath.split("/")   # split the string into list using "/" as delimiter
@@ -64,9 +64,10 @@ class Writer:
             - result of the calculation
         """
 
-        ind = len(os.listdir())
-        filename = "log_" + str(ind)
-        row = [time.time(), input_file, ind, ]
+        ind = len(os.listdir("calculator/results/"))
+        filename = "calculator/results/log_" + str(ind) + ".txt"
+        operation = Reader.get_operation_name(input_file)
+        row = [time.time(), input_file, ind, operation]
 
         with open(filename, "w") as file:
             writer = csv.writer(file)
