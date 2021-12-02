@@ -1,10 +1,11 @@
+""" run Calculation tests using CSV data files """
+
 import pytest
 from calculator.helpers.csv_handler import Reader, Writer
 from calculator.main import Calculator
 
-
 def test_get_operation_name():
-    """ this is a private function """
+    """ check for operation type being properly extracted from filepath """
     # ARRANGE
     filepath = "tests/input_data/addition.csv"
 
@@ -15,6 +16,10 @@ def test_get_operation_name():
     assert operation_name == "addition"
 
 def operation_test_loop(rows, operation):
+    """
+    loop through rows of data
+    assert correctness of expected vs calculated results
+    """
     # ARRANGE by looping through the test data and extracting vars
     for row in rows:
         expected_result = row[0]
@@ -26,64 +31,36 @@ def operation_test_loop(rows, operation):
         # ASSERT that the expected and calculated are same result
         assert expected_result == calculated_result
 
-def test_addition_using_file():
-    """  """
-    filename = "tests/input_data/addition.csv"
-    rows, operation = Reader.process_file(filename)
+
+@pytest.mark.parametrize("filename", [
+    "addition.csv", "subtraction.csv", "multiplication.csv",
+    "large_addition.csv", "large_subtraction.csv",
+    "large_multiplication.csv",
+])
+def test_math_operations_using_file(filename):
+    """
+    loop through the rows of ADDITION SUBTRACTION and MULTIPLICATION data
+    assert correctness of the expected vs calculated result
+    """
+    # ARRANGE
+    filepath = "tests/input_data/" + filename
+    rows, operation = Reader.process_file(filepath)
 
     operation_test_loop(rows, operation)
 
-    Writer.write_log(filename)
+    Writer.write_log(filepath)
 
-def test_subtraction_using_file():
-    """  """
-    filename = "tests/input_data/subtraction.csv"
-    rows, operation = Reader.process_file(filename)
-
-    operation_test_loop(rows, operation)
-
-    Writer.write_log(filename)
-
-def test_multiplication_using_file():
-    """  """
-    filename = "tests/input_data/multiplication.csv"
-    rows, operation = Reader.process_file(filename)
-
-    operation_test_loop(rows, operation)
-
-    Writer.write_log(filename)
-
-def test_division_using_file():
-    """  """
-    filename = "tests/input_data/division.csv"
-    rows, operation = Reader.process_file(filename)
+@pytest.mark.parametrize("filename", ["division.csv", "large_division.csv"])
+def test_division_operation_using_file(filename):
+    """
+    loop through the rows of DIVISION data
+    assert correctness of the expected vs calculated result
+    """
+    # ARRANGE
+    filepath = "tests/input_data/" + filename
+    rows, operation = Reader.process_file(filepath)
 
     with pytest.raises(ZeroDivisionError):
         operation_test_loop(rows, operation)
 
-    Writer.write_log(filename)
-
-
-def test_large_addition_using_file():
-    """  """
-    rows, operation = Reader.process_file("tests/input_data/large_addition.csv")
-
-    operation_test_loop(rows, operation)
-
-    Writer.write_log(filename)
-
-def test_large_subtraction_using_file():
-    """  """
-    rows, operation = Reader.process_file("tests/input_data/large_subtraction.csv")
-
-    operation_test_loop(rows, operation)
-
-    Writer.write_log(filename)
-
-def test_large_multiplication_using_file():
-    """  """
-    rows, operation = Reader.process_file("tests/input_data/large_multiplication.csv")
-
-    operation_test_loop(rows, operation)
-
-    Writer.write_log(filename)
+    Writer.write_division_log()
