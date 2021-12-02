@@ -7,3 +7,5 @@ wheel
 pandas
 Flask
 uwsgi
+pandas
+csv

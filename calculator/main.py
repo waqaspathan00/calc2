@@ -1,8 +1,14 @@
 """ This is the Calculator object which can do basic calculator functions: +-*/ """
-from calculator.calculations.history import History
+from calculator.helpers.history import History
 
 class Calculator:
     """ This is the Calculator class"""
+
+    @staticmethod
+    def calculate_numbers(operation, *vals):
+        """ will call respective calculation functions based on operation """
+        function = Calculator.operation_functions[operation]
+        return function(*vals)
 
     @staticmethod
     def add_number(*vals):
@@ -33,3 +39,11 @@ class Calculator:
         """ return the result of the last calculation """
         calculation = History.get_last_calculation()
         return calculation.get_result()
+
+
+Calculator.operation_functions = {
+    "addition": Calculator.add_number,
+    "subtraction": Calculator.subtract_number,
+    "multiplication": Calculator.multiply_number,
+    "division": Calculator.divide_number,
+}

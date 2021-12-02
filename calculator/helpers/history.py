@@ -49,6 +49,6 @@ class History:
         History.history = []
 
     @staticmethod
-    def remove_from_history(index):
+    def remove_from_history(index: int):
         """ remove a calculation at specified index in history """
         History.history.pop(index)

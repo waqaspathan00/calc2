@@ -9,7 +9,7 @@ def fixture_new_calculator():
 
 def test_add(new_calculator):
     """ testing the Add function of the calculator """
-    # ARRANGE by instantiating the calc class using pytest fixture
+    # ARRANGE by instantiating the calc class (using pytest fixture)
 
     # ACT by calling the method to be tested
     result = new_calculator.add_number(1, 2, 3)
@@ -35,6 +35,6 @@ def test_calculator_divide(new_calculator):
 def test_calculator_divide_by_zero(new_calculator):
     """ Testing divide by zero on divide method of calculator"""
 
-    # the 'with' keyword here is saying the following block of code must throw given exception
+    # "with pytest.raises(Exception)" says the following block of code must throw given exception
     with pytest.raises(ZeroDivisionError):
         new_calculator.divide_number(10, 0)
