@@ -1,7 +1,7 @@
 """ testing the History """
 import pytest
 from calculator.main import Calculator
-from calculator.calculations.history import History
+from calculator.helpers.history import History
 
 @pytest.fixture(name="clear_history")
 def fixture_clear_history():
