@@ -59,4 +59,4 @@ class Division(Calculation):  # pylint: disable=too-few-public-methods
                 raise ZeroDivisionError("Divide by zero error")
             total /= val
 
-        return total
+        return int(total)
