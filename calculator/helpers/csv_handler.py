@@ -1,9 +1,12 @@
-import pandas
+""" Contains Reader and Writer classes for parsing csv test files """
+
 import time
 import csv
 import os
+import pandas
 
 class Reader:
+    """ Use to get data rows and math operation from a CSV file """
 
     @staticmethod
     def process_file(filepath):
@@ -21,8 +24,9 @@ class Reader:
         returns a 2d list
         The first index of each internal list is the result/ expectant value
         every subsequent value is a number to be calculated
+
+        TODO: optimize and clean up the code using built in df methods
         """
-        filepath = filepath
         data = pandas.read_csv(filepath)
         dataframe = pandas.DataFrame(data=data)
         cols = list(dataframe.columns)
@@ -30,7 +34,7 @@ class Reader:
         rows = []
         for i in range(len(data)):
             row = []
-            for j in range(len(cols)):
+            for j in range(len(cols)):  # pylint: disable=consider-using-enumerate
                 col = cols[j]
                 row.append(dataframe[col][i])
             rows.append(row)
@@ -51,24 +55,50 @@ class Reader:
         return filepath
 
 
-class Writer:
+class Writer:  # pylint: disable=too-few-public-methods
+    """ Writes log files containing data about the test that was completed """
+
+    @staticmethod
+    def write_division_log():
+        """
+        write a log file containing a row of data
+            - record number
+            - filename of the input file
+        """
+        record_num = len(os.listdir("tests/exceptions/"))
+        filepath = "tests/exceptions/log_" + str(record_num) + ".txt"
+        row = [record_num, filepath]
+
+        with open(filepath, "w") as file:
+            writer = csv.writer(file)
+            writer.writerow(row)
 
     @staticmethod
     def write_log(input_file):
         """
-        Writes a log file containing:
+        Writes a log file containing data defined in _create_row()
+        """
+
+        filepath, row = Writer._create_row(input_file)
+
+        with open(filepath, "w") as file:
+            writer = csv.writer(file)
+            writer.writerow(row)
+
+    @staticmethod
+    def _create_row(input_file):
+        """
+        private method, create a row of data
             - unix time stamp
             - filename of the input file
             - record number
-            - operation
-            - result of the calculation
+            - math operation
         """
-
-        ind = len(os.listdir("calculator/results/"))
-        filename = "calculator/results/log_" + str(ind) + ".txt"
+        time_stamp = time.time()
+        filename = Reader.get_operation_name(input_file) + ".csv"
+        record_num = len(os.listdir("tests/completed/"))
+        filepath = "tests/completed/log_" + str(record_num) + ".txt"
         operation = Reader.get_operation_name(input_file)
-        row = [time.time(), input_file, ind, operation]
+        row = [time_stamp, filename, record_num, operation]
 
-        with open(filename, "w") as file:
-            writer = csv.writer(file)
-            writer.writerow(row)
+        return filepath, row
