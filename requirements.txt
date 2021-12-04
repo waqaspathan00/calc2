@@ -1,11 +1,8 @@
-pytest-cov
 pytest
-pycodestyle
 pytest-pylint
+pytest-cov
+pycodestyle
 setuptools
-wheel
 pandas
 Flask
-uwsgi
-pandas
-csv
+uWSGI
