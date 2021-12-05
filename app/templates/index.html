@@ -3,9 +3,38 @@
 {% block head %}
     {{ super() }}
     <style type="text/css">
-        .important { color: #336699; }
+        .important {
+            color: #336699;
+        }
     </style>
 {% endblock %}
-
 {% block content %}
+
+    <form action="/calculator" method="POST">
+        <input id="tbInput" type="text"/>
+
+        <div id="VirtualKey">
+            <input class="btn btn-outline-dark" id="btn1" type="button" onclick="input(this);"/>
+            <input class="btn btn-outline-dark" id="btn2" type="button" onclick="input(this);"/>
+            <input class="btn btn-outline-dark" id="btn3" type="button" onclick="input(this);"/>
+            <br/>
+            <input class="btn btn-outline-dark" id="btn4" type="button" onclick="input(this);"/>
+            <input class="btn btn-outline-dark" id="btn5" type="button" onclick="input(this);"/>
+            <input class="btn btn-outline-dark" id="btn6" type="button" onclick="input(this);"/>
+            <br/>
+            <input class="btn btn-outline-dark" id="btn7" type="button" onclick="input(this);"/>
+            <input class="btn btn-outline-dark" id="btn8" type="button" onclick="input(this);"/>
+            <input class="btn btn-outline-dark" id="btn9" type="button" onclick="input(this);"/>
+            <br/>
+            <input class="btn btn-outline-dark" id="btn0" type="button" onclick="input(this)"/>
+            <input class="btn btn-dark" id="btnSpace" type="button" value="Space" onclick="space();"/>
+            <br/>
+
+            <input class="btn btn-danger" id="btnDelete" type="button" value="Backspace" onclick="del();"/>
+            <input class="btn btn-danger" id="btnClear" type="button" value="Clear" onclick="clearAll();"/>
+
+
+            <input class="btn btn-success" type="submit" value="Calculate">
+        </div>
+    </form>
 {% endblock %}
