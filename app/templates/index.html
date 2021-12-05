@@ -10,8 +10,8 @@
 {% endblock %}
 {% block content %}
 
-    <form action="/calculator" method="POST">
-        <input id="tbInput" type="text"/>
+    <form action="/" method="POST">
+        <input id="tbInput" name="nums" type="text"/>
 
         <div id="VirtualKey">
             <input class="btn btn-outline-dark" id="btn1" type="button" onclick="input(this);"/>
@@ -32,7 +32,6 @@
 
             <input class="btn btn-danger" id="btnDelete" type="button" value="Backspace" onclick="del();"/>
             <input class="btn btn-danger" id="btnClear" type="button" value="Clear" onclick="clearAll();"/>
-
 
             <input class="btn btn-success" type="submit" value="Calculate">
         </div>

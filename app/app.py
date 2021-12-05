@@ -10,10 +10,14 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 def index_get():
     return IndexController.get()
 
-@app.route("/calculator", methods=['GET'])
-def calculator_get():
-    return CalculatorController.get()
+@app.route("/", methods=['POST'])
+def index_post():
+    return IndexController.post()
 
-@app.route("/calculator", methods=['POST'])
-def calculator_post():
-    return CalculatorController.post()
+# @app.route("/calculator", methods=['GET'])
+# def calculator_get():
+#     return CalculatorController.get()
+#
+# @app.route("/calculator", methods=['POST'])
+# def calculator_post():
+#     return CalculatorController.post()
