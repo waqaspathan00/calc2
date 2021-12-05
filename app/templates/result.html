@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+    {{ super() }}
+    <style type="text/css">
+        .important {
+            color: #336699;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+
+    <h1>Calculation Result</h1>
+
+    {% for num in nums %}
+        <strong>Value {{ loop.index }}: </strong> {{ num }} <br>
+    {% endfor %}
+
+    <strong>Operation: </strong> {{ operation }} <br>
+    <strong>Result: </strong> {{ result }}
+
+{% endblock %}
