@@ -17,9 +17,10 @@
         {% endfor %}
     {% endif %}
 {% endwith %}
-    <strong>Value 1: </strong> {{ value1 }} <br>
-    <strong>Value 2: </strong> {{ value2 }} <br>
-    <strong>Operation: </strong> {{ operation }} <br>
-    <strong>Result: </strong> {{ result }}
+    {% for num in nums %}
+        <strong>Value {{loop.index}}: </strong> {{ num }} <br>
+    {% endfor %}
+        <strong>Operation: </strong> {{ operation }} <br>
+        <strong>Result: </strong> {{ result }}
 
 {% endblock %}
