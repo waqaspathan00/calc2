@@ -48,7 +48,7 @@ def test_math_operations_using_file(filename):
 
     operation_test_loop(rows, operation)
 
-    Writer.write_log(filepath)
+    Writer.write_line(filepath)
 
 @pytest.mark.parametrize("filename", ["division.csv", "large_division.csv"])
 def test_division_operation_using_file(filename):
