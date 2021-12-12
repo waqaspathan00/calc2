@@ -10,22 +10,22 @@
 {% endblock %}
 {% block content %}
 
-    <h1>This is where the table will show</h1>
+    <h3>Previous Calculations</h3>
 
     <table id="data" class="table table-striped">
         <thead>
         <tr>
-            <th>Calculation Type</th>
+            <th>Operation</th>
             <th>Result</th>
-            <th>Values</th>
+            <th>Numbers</th>
         </tr>
         </thead>
         <tbody>
-        {% for calculation in data %}
+        {% for row in rows %}
             <tr>
-                <td>{{ calculation[0] }}</td>
-                <td>{{ calculation[1] }}</td>
-                <td>{{ calculation[2] }}</td>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
             </tr>
         {% endfor %}
         </tbody>
