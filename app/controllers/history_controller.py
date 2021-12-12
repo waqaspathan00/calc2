@@ -8,15 +8,16 @@ class HistoryController(ControllerBase):
 
     @staticmethod
     def get():
-        # rows = Reader.get_rows("../../data.csv")
-        # print(rows)
+        rows = Reader.get_rows("app/data.csv")
 
-        calculation_data = [
-            ["addition", "10", "5 5"],
-            ["addition", "20", "10 5 5"],
-            ["subtraction", "25", "100 75"],
-            ["multiplication", "1200", "5 8 3 5 2"],
-            ["division", "7", "49 7"],
-        ]
+        print("in history controller", rows)
 
-        return render_template('history.html', data=calculation_data)
+        # calculation_data = [
+        #     ["addition", "10", "5 5"],
+        #     ["addition", "20", "10 5 5"],
+        #     ["subtraction", "25", "100 75"],
+        #     ["multiplication", "1200", "5 8 3 5 2"],
+        #     ["division", "7", "49 7"],
+        # ]
+
+        return render_template('history.html', rows=rows)

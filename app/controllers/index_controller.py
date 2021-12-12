@@ -1,6 +1,7 @@
 from app.controllers.controller import ControllerBase
 from flask import render_template, request, flash
 from calculator.main import Calculator
+from calculator.helpers.history import History
 
 class IndexController(ControllerBase):
 
@@ -10,6 +11,7 @@ class IndexController(ControllerBase):
         get the numbers entered from the form
         then perform calculation specified by user
         """
+        # get the numbers entered in the textbox and turn it into a list of numbers
         nums = [int(num) for num in request.form["nums"].split()]
 
         if len(nums) < 2:
