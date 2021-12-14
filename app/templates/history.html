@@ -21,14 +21,22 @@
         </tr>
         </thead>
         <tbody>
-        {% for row in rows %}
-            <tr>
-                <td>{{ row[0] }}</td>
-                <td>{{ row[1] }}</td>
-                <td>{{ row[2] }}</td>
-            </tr>
-        {% endfor %}
+            {% if rows %}
+                {% for row in rows %}
+                    <tr>
+                        <td>{{ row[0] }}</td>
+                        <td>{{ row[1] }}</td>
+                        <td>{{ row[2] }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>No data to display</tr>
+            {% endif %}
         </tbody>
     </table>
+
+    <form action="/history" method="POST">
+        <input type="submit" value="Clear">
+    </form>
 
 {% endblock %}

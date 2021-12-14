@@ -65,9 +65,9 @@ class History:
         """ remove all calculations in history """
         filename = "app/data.csv"
         # opening the file with w+ mode truncates the file
-        f = open(filename, "w+")
-        f.write("operation, result, numbers\n")
-        f.close()
+        file = open(filename, "w+")
+        file.write("operation, result, numbers\n")
+        file.close()
 
     @staticmethod
     def remove_from_history(index: int):

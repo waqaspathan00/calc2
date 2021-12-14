@@ -14,14 +14,13 @@ def index_get():
 def index_post():
     return IndexController.post()
 
-@app.route("/history")
-def history():
+@app.route("/history", methods=['GET'])
+def history_get():
+    """ GET the calculation history """
     return HistoryController.get()
 
-# @app.route("/calculator", methods=['GET'])
-# def calculator_get():
-#     return CalculatorController.get()
-#
-# @app.route("/calculator", methods=['POST'])
-# def calculator_post():
-#     return CalculatorController.post()
+@app.route("/history", methods=['POST'])
+def history_post():
+    """ handle history POST request """
+    return HistoryController.post()
+

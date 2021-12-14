@@ -2,9 +2,18 @@ from app.controllers.controller import ControllerBase
 from flask import render_template
 from calculator.helpers.history import History
 from calculator.helpers.csv_handler import Reader
+from calculator.helpers.history import History
 
 
 class HistoryController(ControllerBase):
+    """ will retrieve all rows of history in data.csv """
+
+    @staticmethod
+    def post():
+        History.clear_history()
+
+        return render_template('history.html')
+
 
     @staticmethod
     def get():
