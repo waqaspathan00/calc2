@@ -1,6 +1,6 @@
 """ flask calculator web app """
 
-from flask import Flask
+from flask import Flask, render_template
 from app.controllers.index_controller import IndexController
 from app.controllers.history_controller import HistoryController
 
@@ -30,4 +30,22 @@ def history_get():
 def history_post():
     """ handle history POST request """
     return HistoryController.post()
+
+@app.route("/pytest")
+def pytest():
+    return render_template('pytest.html')
+
+@app.route("/pylint")
+def pylint():
+    return render_template('pylint.html')
+
+@app.route("/oop")
+def oop():
+    return render_template('oop.html')
+
+@app.route("/glossary")
+def glossary():
+    return render_template('glossary.html')
+
+
 

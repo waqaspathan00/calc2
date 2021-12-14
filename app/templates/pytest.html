@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+
+<!-- Topic 1 - PyTest -->
+<section class="about" id="pytest">
+    <div class="title">
+        <h2 class="section-title">What Is PyTest</h2>
+    </div>
+    <div>
+        <h1 style="align-content: center; color: black; margin-bottom: 30px">PyTest is a tool that
+            allows you to test your code in multiple different aspects simultaneously.
+            Testing is important because it helps you to ensure that your program is
+            behaving the way you want.
+        </h1>
+    </div>
+</section>
+
+
+<!-- Topic 2 - AAA Testing -->
+<section class="about" id="aaa-testing">
+    <div class="title">
+        <h2 class="section-title">AAA Testing And Why It's Important</h2>
+    </div>
+
+    <div>
+        <h3 style="align-content: center; color: black; margin-bottom: 30px"> AAA testing is a way of structuring your tests
+            Arrange, Act, Assert. In the picture we can see each step broken down followed by a short definition.
+        </h3>
+    </div>
+
+    <img src="images/pytest1.png" alt="pylint-install" width="600" height="300">
+</section>
+
+<!-- Topic 3 - External Data -->
+<section class="about" id="external-data">
+    <div class="title">
+        <h2 class="section-title">Using external data for testing</h2>
+    </div>
+
+    <div>
+        <h3 style="align-content: center; color: black; margin-bottom: 30px">
+            In this csv file, we have created data to test an addition function.
+            The first 2 columns contain the data to be inputted into the function.
+            The last column is the expected resulting value of the calculation
+        </h3>
+    </div>
+
+    <img src="images/external_data.png" alt="pylint-install">
+</section>
+
+    <footer class="footer">
+        <span class="footer-title">Waqas Pathan</span>
+        <p>Copyright @2021 <a href="#">Githup Repo</a>. All Rights Reserved.</p>
+    </footer>
+
+    <script src="scripts/script.js" charset="utf-8"></script>
+
+{% endblock %}
