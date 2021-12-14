@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+
+<!-- Topic 1 - Pylint -->
+<section class="about" id="pylint">
+    <div class="title">
+        <h2 class="section-title">What Is Pylint And How To Implement It</h2>
+    </div>
+    <div>
+        <h1 style="align-content: center; color: black; margin-bottom: 30px"> Pylint is a tool that reads through your code
+            and helps you maintain a universal format, PEP8, that makes it more readable.
+            This can entail adding docstrings to describe a block of code (like functions and classes),
+            and also using proper spacing so the code is not congested</h1>
+    </div>
+    <div class="content">
+        <div class="column col-left ">
+            <div class="img-card">
+                <img src="../static/images/pylint-install.png" alt="pylint-install">
+            </div>
+        </div>
+        <div class="column col-right">
+            <p style="font-size: x-large; margin-left: 50px">Step 1: Installing pylint. In the terminal enter "pip install pylint"</p>
+        </div>
+    </div>
+
+    <div>
+        <div class="content">
+            <div class="column col-left">
+                <div class="img-card">
+                    <img src="../static/images/initial_lint.png" alt="pylint-1">
+                </div>
+            </div>
+            <div class="column col-right">
+                <p style="font-size: x-large; margin-left: 50px">Step 2: A basic function not conforming to PEP8 standards.</p>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="content">
+            <div class="column col-left">
+                <div class="img-card">
+                    <img src="../static/images/conforming_lint.png" alt="pylint-2">
+                </div>
+            </div>
+            <div class="column col-right">
+                <p style="font-size: x-large; margin-left: 50px">Step 3: Now to lint our program. In terminal, enter "pylint {filename}".
+                    Our class may work, but it's not very readable. Let's now implement the requirements
+                    suggested by Pylint
+                </p>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+    <footer class="footer">
+        <span class="footer-title">Waqas Pathan</span>
+        <p>Copyright @2021 <a href="#">Githup Repo</a>. All Rights Reserved.</p>
+    </footer>
+
+    <script src="scripts/script.js" charset="utf-8"></script>
+
+{% endblock %}

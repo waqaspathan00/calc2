@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+
+<!-- Topic 1 - Pylint -->
+<section class="about" id="github">
+    <div class="title">
+        <h2 class="section-title">Object Orientated Programming</h2>
+        <h3>With examples from the calculator</h3>
+    </div>
+    <div class="content">
+        <div class="column col-left">
+            <h1 style="margin-bottom: 20px">Encapsulation:</h1>
+            <p style="font-size: x-large; margin-left: 50px">
+               	Making certain attributes and behaviors of an object private from other objects.
+                <br>
+                In the Calculator app, we encapsulated the methods to perform math operations.
+            </p>
+        </div>
+    </div>
+
+    <div>
+        <div class="content">
+            <div class="column col-left">
+                <h1 style="margin-bottom: 20px">Inheritance:</h1>
+                <p style="font-size: x-large; margin-left: 50px">
+                    Creating objects (children) that take, or inherit,
+                     attributes and behaviors from their parent object
+                    <br>
+                    In the Calculator app, each of the math operations
+                    inherited behavior from a Calculation object
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="content">
+            <div class="column col-left">
+                <h1 style="margin-bottom: 20px">Polymorphism:</h1>
+                <p style="font-size: x-large; margin-left: 50px">
+                    Defining an object that creates an outline for specific behaviors
+                    <br>
+                    In the Calculator app, polymorphism was used when we created the Calculation object
+                    which was used as an outline for the 4 math operations. The important thing to realize here
+                    is that all the math operations perform a calculation, but in a different way.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="content">
+            <div class="column col-left">
+                <h1 style="margin-bottom: 20px">Abstraction:</h1>
+                <p style="font-size: x-large; margin-left: 50px">
+                    Taking all of the behaviors and attributes of an object and
+                    condensing it into a format that is usable
+                    <br>
+                    In the Calculator app, the user should not be able to directly change the history.
+                    However, when they perform a math operation, the data of that operation will
+                    be automatically added to the history
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Topics END -->
+
+<footer class="footer">
+    <span class="footer-title">Waqas Pathan</span>
+    <p>Copyright @2021 <a href="#">Githup Repo</a>. All Rights Reserved.</p>
+</footer>
+
+<script src="scripts/script.js" charset="utf-8"></script>
+
+{% endblock %}

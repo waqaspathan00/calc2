@@ -39,8 +39,9 @@ def operation_test_loop(rows, operation):
 ])
 def test_math_operations_using_file(filename):
     """
-    loop through the rows of ADDITION SUBTRACTION and MULTIPLICATION data
+    loop through rows of data
     assert correctness of the expected vs calculated result
+    used for ADDITION SUBTRACTION and MULTIPLICATION
     """
     # ARRANGE
     filepath = "tests/input_data/" + filename

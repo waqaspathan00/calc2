@@ -1,5 +1,6 @@
 """ this module contains the History class """
 from calculator.calculations.operations import Addition, Subtraction, Multiplication, Division
+from calculator.helpers.csv_handler import Writer
 
 class History:
     """
@@ -11,22 +12,42 @@ class History:
     @staticmethod
     def add_addition_calculation(*vals):
         """ add Addition object with vals to history """
-        History.history.append(Addition.create(*vals))
+        new_calculation = Addition.create(*vals)
+        History.write_calculation(new_calculation)
 
     @staticmethod
     def add_subtraction_calculation(*vals):
         """ add Subtraction object with vals to history """
-        History.history.append(Subtraction.create(*vals))
+        new_calculation = Subtraction.create(*vals)
+        History.write_calculation(new_calculation)
 
     @staticmethod
     def add_multiplication_calculation(*vals):
         """ add Multiplication object with vals to history """
-        History.history.append(Multiplication.create(*vals))
+        new_calculation = Multiplication.create(*vals)
+        History.write_calculation(new_calculation)
 
     @staticmethod
     def add_division_calculation(*vals):
         """ add Division object with vals to history """
-        History.history.append(Division.create(*vals))
+        new_calculation = Division.create(*vals)
+        History.write_calculation(new_calculation)
+
+    @staticmethod
+    def write_calculation(new_calculation):
+        """
+        add a new line of data to data.csv
+            [operation, result, vals]
+        """
+        History.history.append(new_calculation)
+
+        operation = History.operation_names[type(new_calculation)]
+        result = new_calculation.get_result()
+        vals = new_calculation.vals
+
+        row = [operation, result, vals]
+
+        Writer.write_line("app/data.csv", row)
 
     @staticmethod
     def get_first_calculation():
@@ -46,9 +67,21 @@ class History:
     @staticmethod
     def clear_history():
         """ remove all calculations in history """
-        History.history = []
+        filename = "app/data.csv"
+        # opening the file with w+ mode truncates the file
+        file = open(filename, "w+")
+        file.write("operation, result, numbers\n")
+        file.close()
 
     @staticmethod
     def remove_from_history(index: int):
         """ remove a calculation at specified index in history """
         History.history.pop(index)
+
+
+History.operation_names = {
+    Addition: "addition",
+    Subtraction: "subtraction",
+    Multiplication: "multiplication",
+    Division: "division",
+}

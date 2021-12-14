@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+
+<!-- Topics START -->
+
+<section class="about" id="glossary">
+    <div class="title">
+        <h2 class="section-title">Glossary of Programming Terms</h2>
+    </div>
+    <div class="content">
+        <div class="column col-left">
+            <h1 style="margin-bottom: 20px">Instantiation</h1>
+            <p style="font-size: x-large; margin-left: 50px">Creating an object</p>
+        </div>
+    </div>
+
+    <div>
+        <div class="content">
+            <div class="column col-left">
+                <h1 style="margin-bottom: 20px">Object</h1>
+                <p style="font-size: x-large; margin-left: 50px">An instance of a class</p>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="content">
+            <div class="column col-left">
+                <h1 style="margin-bottom: 20px">Class</h1>
+                <p style="font-size: x-large; margin-left: 50px">A collection of related attributes and behaviors</p>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="content">
+            <div class="column col-left">
+                <h1 style="margin-bottom: 20px">Namespace</h1>
+                <p style="font-size: x-large; margin-left: 50px">Defining a section of a program where specific
+                    classes and functions are located</p>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="content">
+            <div class="column col-left">
+                <h1 style="margin-bottom: 20px">Constructor</h1>
+                <p style="font-size: x-large; margin-left: 50px">
+                    A function called upon object instantiation.
+                    Sets up the core attributes of a given class
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="content">
+            <div class="column col-left">
+                <h1 style="margin-bottom: 20px">Fixture</h1>
+                <p style="font-size: x-large; margin-left: 50px">
+                    A fixture acts as the Arrange steps in AAA testing.
+                    Fixtures are useful for condensing pytests that have repeated behaviors
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="content">
+            <div class="column col-left">
+                <h1 style="margin-bottom: 20px">Unit Test</h1>
+                <p style="font-size: x-large; margin-left: 50px">
+                    Testing the code to see if functions and attributes are
+                    behaving as intended
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+
+    <!-- Topics END -->
+
+    <footer class="footer">
+        <span class="footer-title">Waqas Pathan</span>
+        <p>Copyright @2021 <a href="#">Githup Repo</a>. All Rights Reserved.</p>
+    </footer>
+
+    <script src="scripts/script.js" charset="utf-8"></script>
+
+{% endblock %}

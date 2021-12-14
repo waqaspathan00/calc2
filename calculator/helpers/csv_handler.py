@@ -59,6 +59,16 @@ class Writer:  # pylint: disable=too-few-public-methods
     """ Writes log files containing data about the test that was completed """
 
     @staticmethod
+    def write_line(infile, row):
+        """
+        Writes a log file containing data defined in _create_row()
+        """
+
+        with open(infile, "a") as file:
+            writer = csv.writer(file)
+            writer.writerow(row)
+
+    @staticmethod
     def write_division_log():
         """
         write a log file containing a row of data
@@ -94,6 +104,7 @@ class Writer:  # pylint: disable=too-few-public-methods
             - record number
             - math operation
         """
+
         time_stamp = time.time()
         filename = Reader.get_operation_name(input_file) + ".csv"
         record_num = len(os.listdir("tests/completed/"))

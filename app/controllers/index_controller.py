@@ -1,15 +1,23 @@
-from app.controllers.controller import ControllerBase
+""" handle POST and GET requests for the Calculator """
+
 from flask import render_template, request, flash
+from app.controllers.controller import ControllerBase
 from calculator.main import Calculator
 
 class IndexController(ControllerBase):
+    """
+        user can enter values and perform a math calculation on them
+        values are entered in a textbox seperated by a space
+        operation is chosen between 4 radio buttons
+    """
 
     @staticmethod
     def post():
         """
-        get the numbers entered from the form
-        then perform calculation specified by user
+            get the numbers entered from the form
+            then perform calculation specified by user
         """
+        # get the numbers entered in the textbox and turn it into a list of numbers
         nums = [int(num) for num in request.form["nums"].split()]
 
         if len(nums) < 2:
@@ -27,4 +35,5 @@ class IndexController(ControllerBase):
 
     @staticmethod
     def get():
+        """ get the calculator page """
         return render_template('index.html')
