@@ -1,6 +1,9 @@
 # Calculator Project Setup
 [![Build Status](https://app.travis-ci.com/waqaspathan00/calc2.svg?branch=main)](https://app.travis-ci.com/waqaspathan00/calc2)
 
+Here is a youtube link to a demonstration of this project:
+https://youtu.be/jHMEwAp3RO4
+
 To run tests, Lint, and Coverage report use this command:
 
 pytest  --pylint --cov
@@ -25,4 +28,7 @@ setup.py is a config file for pytest
 
 ### Created /history where the user can see calculation history
 <img width="1440" alt="Screen Shot 2021-12-10 at 6 45 00 PM" src="https://user-images.githubusercontent.com/67988358/145654688-9063f550-d53d-495f-abac-61c486c46ed3.png">
+
+## Updated passing tests 12/14/2021
+<img width="383" alt="Screen Shot 2021-12-14 at 2 38 50 PM" src="https://user-images.githubusercontent.com/67988358/146067846-490e11dd-43c2-4f63-9cc3-466c028d7765.png">
 
