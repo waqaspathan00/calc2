@@ -35,6 +35,10 @@ class History:
 
     @staticmethod
     def write_calculation(new_calculation):
+        """
+        add a new line of data to data.csv
+            [operation, result, vals]
+        """
         History.history.append(new_calculation)
 
         operation = History.operation_names[type(new_calculation)]

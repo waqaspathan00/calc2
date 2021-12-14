@@ -1,6 +1,7 @@
+""" handle GET request for History """
+
+from flask import render_template, request
 from app.controllers.controller import ControllerBase
-from flask import render_template
-from calculator.helpers.history import History
 from calculator.helpers.csv_handler import Reader
 from calculator.helpers.history import History
 
@@ -17,9 +18,8 @@ class HistoryController(ControllerBase):
 
     @staticmethod
     def get():
+        """ read data.csv to get the current history """
         rows = Reader.get_rows("app/data.csv")
-
-        print("in history controller", rows)
 
         # calculation_data = [
         #     ["addition", "10", "5 5"],

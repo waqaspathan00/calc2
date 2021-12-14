@@ -39,8 +39,9 @@ def operation_test_loop(rows, operation):
 ])
 def test_math_operations_using_file(filename):
     """
-    loop through the rows of ADDITION SUBTRACTION and MULTIPLICATION data
+    loop through rows of data
     assert correctness of the expected vs calculated result
+    used for ADDITION SUBTRACTION and MULTIPLICATION
     """
     # ARRANGE
     filepath = "tests/input_data/" + filename
@@ -48,7 +49,7 @@ def test_math_operations_using_file(filename):
 
     operation_test_loop(rows, operation)
 
-    Writer.write_line(filepath)
+    Writer.write_log(filepath)
 
 @pytest.mark.parametrize("filename", ["division.csv", "large_division.csv"])
 def test_division_operation_using_file(filename):
